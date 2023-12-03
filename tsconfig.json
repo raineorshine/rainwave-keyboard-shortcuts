@@ -16,6 +16,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2022"
+    "target": "es2022",
+    // clear default types so that setTimeout and setInterval are not typed as NodeJS types
+    "types": ["chrome"]
   }
 }
