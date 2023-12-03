@@ -19,11 +19,11 @@ const waitFor = <T>(f: () => T, pollFrequency = 100): Promise<NonNullable<T>> =>
 }
 
 /** JQuery-style query selector. */
-const $ = document.querySelector.bind(document)
+const $ = (query: string) => document.querySelector(query) as HTMLElement | null
 
 /** XPath selector. */
 const $x = (xpath: string) =>
-  document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue
+  document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue as HTMLElement | null
 
 /** Create an element. */
 const $$ = (tagSpec: string, attributes: Attributes = {}, content?: string | ElementSpec[]) => {
