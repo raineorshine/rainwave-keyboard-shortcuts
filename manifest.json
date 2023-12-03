@@ -9,7 +9,13 @@
     {
       "matches": ["https://rainwave.cc/*"],
       "css": ["build/style.css"],
-      "js": ["build/index.js"]
+      "js": ["build/inject.js", "build/index.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["https://rainwave.cc/*"],
+      "resources": ["build/events.js"]
     }
   ]
 }

@@ -135,6 +135,7 @@ const Settings = async () => {
 
   // inject settings
   const settingsLink = await waitFor(() => $x("//*[contains(@class, 'menu')]//a[text()='Settings']"))
+
   settingsLink?.addEventListener('click', async () => {
     const settingsContent = await waitFor(() => $('.modal_container.open .content.main'))
     settingsContent.appendChild(await Settings())

@@ -8,8 +8,6 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "lib": ["es2022", "dom"],
-    // "module": "nodenext",
-    // "moduleResolution": "nodenext",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "outDir": "./build",
