@@ -1,6 +1,4 @@
-Theme for [Rainwave](https://github.com/rmcauley/rainwave) based on [Monokai Classic](https://marketplace.visualstudio.com/items?itemName=monokai.theme-monokai-pro-vscode).
-
-<img width="754" alt="image" src="https://github.com/raineorshine/rainwave-monokai-classic-theme/assets/750276/5ff5670f-cfd3-4008-b51d-044b21251e13">
+Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 
 ## Development
 
@@ -12,7 +10,7 @@ Theme for [Rainwave](https://github.com/rmcauley/rainwave) based on [Monokai Cla
 After making changes:
 
 1. `npm run build`
-2. On the Extension page, click the small refresh icon on "Rainwave Monokai Classic Theme".
+2. On the Extension page, click the small refresh icon on "Rainwave Keyboard Shortcuts".
 3. Refresh rainwave.cc.
 
 ## Deployment

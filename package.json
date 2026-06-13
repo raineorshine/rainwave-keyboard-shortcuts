@@ -1,8 +1,7 @@
 {
-  "name": "rainwave-monokai-classic-theme",
-  "description": "Theme for Rainwave based on Monokai Classic.",
-  "version": "0.0.0",
-  "private": true,
+  "name": "rainwave-keyboard-shortcuts",
+  "description": "Keyboard shortcuts for Rainwave.",
+  "version": "1.0.0",
   "author": {
     "name": "Raine Revere",
     "email": "raine@cybersemics.org",
@@ -14,9 +13,9 @@
   "keywords": [
     "rainwave"
   ],
-  "homepage": "https://github.com/raineorshine/rainwave-monokai-classic-theme",
+  "homepage": "https://github.com/raineorshine/rainwave-keyboard-shortcuts",
   "license": "ISC",
-  "repository": "https://github.com/raineorshine/rainwave-monokai-classic-theme",
+  "repository": "https://github.com/raineorshine/rainwave-keyboard-shortcuts",
   "type": "module",
   "scripts": {
     "build": "bun build:style && bun build:ts",
