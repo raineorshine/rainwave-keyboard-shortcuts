@@ -150,6 +150,12 @@ window.addEventListener('keydown', e => {
       break
     }
 
+    // expand album art (toggle)
+    case 'v':
+      if (modalActive) return
+      $('.art_container.art_expandable')?.click()
+      break
+
     // settings
     case ',':
       if (e.metaKey && e.shiftKey) {
