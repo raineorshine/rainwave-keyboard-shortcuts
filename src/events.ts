@@ -153,7 +153,7 @@ window.addEventListener('keydown', e => {
     // expand album art (toggle)
     case 'v':
       if (modalActive) return
-      $('.art_container.art_expandable')?.click()
+      $('.now_playing .art_container.art_expandable')?.click()
       break
 
     // settings
