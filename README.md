@@ -2,21 +2,21 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 
 ## Shortcuts
 
-| Key             | Action                                                       |
-| --------------- | ------------------------------------------------------------ |
-| `Space`         | Play / pause                                                 |
-| `1`–`5`         | Rate the current song (whole stars)                          |
-| `!` `@` `#` `$` | Rate the current song half a star higher (1.5–4.5)           |
-| `a` `b` `c`     | Vote for the next song                                       |
-| `Shift` + `a`–`c` | Vote in the following round                                |
-| `r`             | Toggle requests                                              |
-| `l`             | Toggle library                                               |
-| `Shift` + `l`   | Toggle the now-playing album in the library                  |
-| `s`             | Open search                                                  |
-| `o`             | Toggle your profile                                          |
-| `p`             | Toggle previously played                                     |
-| `Esc`           | Close the open modal / popup / previously played             |
-| `Cmd` + `Shift` + `,` | Toggle settings                                        |
+| Key                   | Action                                             |
+| --------------------- | -------------------------------------------------- |
+| `Space`               | Play / pause                                       |
+| `1`–`5`               | Rate the current song (whole stars)                |
+| `!` `@` `#` `$`       | Rate the current song half a star higher (1.5–4.5) |
+| `a` `b` `c`           | Vote for the next song                             |
+| `Shift` + `a`–`c`     | Vote in the following round                        |
+| `r`                   | Toggle requests                                    |
+| `l`                   | Toggle library                                     |
+| `Shift` + `l`         | Toggle the now-playing album in the library        |
+| `s`                   | Open search                                        |
+| `o`                   | Toggle your profile                                |
+| `p`                   | Toggle previously played                           |
+| `Esc`                 | Close the open modal / popup / previously played   |
+| `Cmd` + `Shift` + `,` | Toggle settings                                    |
 
 ## Development
 

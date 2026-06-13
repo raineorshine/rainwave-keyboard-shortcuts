@@ -18,17 +18,12 @@
   "repository": "https://github.com/raineorshine/rainwave-keyboard-shortcuts",
   "type": "module",
   "scripts": {
-    "build": "bun build:style && bun build:ts",
-    "build:style": "rm -f build/style.css && sass src/style.scss build/style.css && bun scripts/build-style.js",
-    "build:ts": "tsc",
-    "watch:style": "nodemon -w src -e ts,js,json,scss -x bun build:style",
-    "watch:ts": "tsc --watch"
+    "build": "tsc",
+    "watch": "tsc --watch"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.248",
-    "nodemon": "^3.0.1",
     "prettier": "^3.0.2",
-    "sass": "^1.69.4",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
