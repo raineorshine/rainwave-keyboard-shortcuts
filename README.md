@@ -26,6 +26,7 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | `p`                   | Toggle previously played                           |
 | `Esc`                 | Close the open modal / popup / previously played / expanded album art |
 | `,`                   | Toggle settings                                    |
+| `?`                   | Show the keyboard shortcuts help dialog            |
 
 ## Development
 

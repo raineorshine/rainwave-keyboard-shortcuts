@@ -18,6 +18,214 @@ const keyToRating = {
   '5': 5,
 }
 
+/** All keyboard shortcuts, grouped for display in the help dialog. */
+const shortcutGroups: { title: string; shortcuts: [string, string][] }[] = [
+  {
+    title: 'Playback',
+    shortcuts: [
+      ['Space', 'Play / pause'],
+      ['1–5', 'Rate the current song (whole stars)'],
+      ['! @ # $', 'Rate the current song half a star higher (1.5–4.5)'],
+    ],
+  },
+  {
+    title: 'Voting',
+    shortcuts: [
+      ['a b c', 'Vote for the next song'],
+      ['Shift + a/b/c', 'Vote in the following round'],
+      ['Cmd + a/b/c', 'Toggle the cover image of the next songs'],
+      ['Cmd + Shift + a/b/c', 'Toggle the cover image of the following round'],
+    ],
+  },
+  {
+    title: 'Navigation',
+    shortcuts: [
+      ['r', 'Toggle requests'],
+      ['l', 'Toggle library'],
+      ['Shift + l', 'Toggle the now-playing album in the library'],
+      ['m', 'Toggle the now-playing album'],
+      ['Shift + m', 'Toggle the album of Coming Up (1)'],
+      ['Option + Shift + m', 'Toggle the album of Coming Up (2)'],
+      ['n', 'Toggle the now-playing artist'],
+      ['Shift + n', 'Toggle the artist of Coming Up (1)'],
+      ['Cmd + Shift + n', 'Toggle the artist of Coming Up (2)'],
+      ['s', 'Open search'],
+      ['o', 'Toggle your profile'],
+      ['v', 'Expand the album art'],
+      ['p', 'Toggle previously played'],
+      [',', 'Toggle settings'],
+    ],
+  },
+  {
+    title: 'General',
+    shortcuts: [
+      ['?', 'Show this help dialog'],
+      ['Esc', 'Close the open modal / popup / previously played / expanded album art'],
+    ],
+  },
+]
+
+const HELP_DIALOG_ID = 'rw-shortcuts-help'
+
+/** Closes the keyboard shortcuts help dialog if it is open. Returns true if a dialog was closing/open. */
+const closeHelpDialog = (): boolean => {
+  const existing = document.getElementById(HELP_DIALOG_ID)
+  if (existing) {
+    // already fading out
+    if (existing.dataset.closing) return true
+    existing.dataset.closing = 'true'
+    existing.classList.add('rw-help-closing')
+    existing.classList.remove('rw-help-visible')
+    const remove = () => existing.remove()
+    existing.addEventListener('transitionend', remove, { once: true })
+    // fallback in case transitionend does not fire
+    setTimeout(remove, 250)
+    return true
+  }
+  return false
+}
+
+/** Toggles the keyboard shortcuts help dialog. */
+const toggleHelpDialog = () => {
+  if (closeHelpDialog()) return
+
+  if (!document.getElementById('rw-shortcuts-help-style')) {
+    const style = document.createElement('style')
+    style.id = 'rw-shortcuts-help-style'
+    style.textContent = `
+      #${HELP_DIALOG_ID} {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.6);
+        font-family: 'Roboto Condensed', sans-serif;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      #${HELP_DIALOG_ID}.rw-help-closing {
+        transition: opacity 0.15s ease;
+      }
+      #${HELP_DIALOG_ID}.rw-help-visible {
+        opacity: 1;
+      }
+      #${HELP_DIALOG_ID} .rw-help-panel {
+        background: #1f2937;
+        color: #e5e7eb;
+        max-width: 640px;
+        width: calc(100% - 40px);
+        max-height: calc(100% - 80px);
+        overflow-y: auto;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        padding: 24px 28px;
+      }
+      #${HELP_DIALOG_ID} .rw-help-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 0 16px;
+      }
+      #${HELP_DIALOG_ID} .rw-help-header h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+      }
+      #${HELP_DIALOG_ID} .rw-help-close {
+        background: none;
+        border: none;
+        color: #9ca3af;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0 4px;
+      }
+      #${HELP_DIALOG_ID} .rw-help-close:hover {
+        color: #fff;
+      }
+      #${HELP_DIALOG_ID} h3 {
+        margin: 18px 0 8px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: #60a5fa;
+      }
+      #${HELP_DIALOG_ID} table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      #${HELP_DIALOG_ID} td {
+        padding: 4px 0;
+        vertical-align: top;
+        font-size: 14px;
+      }
+      #${HELP_DIALOG_ID} td.rw-help-keys {
+        width: 40%;
+        white-space: nowrap;
+      }
+      #${HELP_DIALOG_ID} kbd {
+        display: inline-block;
+        background: #374151;
+        border: 1px solid #4b5563;
+        border-bottom-width: 2px;
+        border-radius: 4px;
+        padding: 1px 6px;
+        margin: 1px 2px 1px 0;
+        font-family: inherit;
+        font-size: 13px;
+        color: #f9fafb;
+      }
+    `
+    document.head.appendChild(style)
+  }
+
+  /** Renders a shortcut key string into <kbd> elements. */
+  const renderKeys = (keys: string): string =>
+    keys
+      .split(' + ')
+      .map(part => `<kbd>${part.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</kbd>`)
+      .join(' + ')
+
+  const overlay = document.createElement('div')
+  overlay.id = HELP_DIALOG_ID
+
+  const body = shortcutGroups
+    .map(
+      group =>
+        `<h3>${group.title}</h3><table>${group.shortcuts
+          .map(([keys, action]) => `<tr><td class="rw-help-keys">${renderKeys(keys)}</td><td>${action}</td></tr>`)
+          .join('')}</table>`,
+    )
+    .join('')
+
+  overlay.innerHTML = `
+    <div class="rw-help-panel" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
+      <div class="rw-help-header">
+        <h2>Keyboard Shortcuts</h2>
+        <button class="rw-help-close" aria-label="Close">&times;</button>
+      </div>
+      ${body}
+    </div>
+  `
+
+  // close when clicking the backdrop or the close button
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay || (e.target as HTMLElement).closest('.rw-help-close')) {
+      closeHelpDialog()
+    }
+  })
+
+  document.body.appendChild(overlay)
+
+  // force a reflow so the initial opacity: 0 is committed before the
+  // transition to opacity: 1, otherwise the browser may skip the fade-in
+  void overlay.offsetWidth
+  overlay.classList.add('rw-help-visible')
+}
+
 /** Toggles a route on or off. */
 const toggleRoute = (route: Route, arg?: string) => {
   const current = Router.get_current_url()
@@ -43,6 +251,23 @@ window.addEventListener('keydown', e => {
     document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE).singleNodeValue as HTMLElement | null
 
   const modalActive = !!$('.modal_active')
+
+  // keyboard shortcuts help dialog (toggle)
+  // Shift + / produces '?'
+  if (e.key === '?') {
+    e.preventDefault()
+    toggleHelpDialog()
+    return
+  }
+
+  // if the help dialog is open, only Escape (to close it) should be handled
+  if (document.getElementById(HELP_DIALOG_ID)) {
+    if (e.key === 'Escape') {
+      e.preventDefault()
+      closeHelpDialog()
+    }
+    return
+  }
 
   // now-playing album (toggle)
   // +shift to toggle the album of COMING UP (1) (the song you voted for)
