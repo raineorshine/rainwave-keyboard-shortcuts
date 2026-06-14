@@ -46,9 +46,9 @@ const shortcutGroups: { title: string; shortcuts: [string, string][] }[] = [
       ['M', 'Toggle the album of Now Playing'],
       ['Shift + M', 'Toggle the album of Coming Up (1)'],
       ['Option + Shift + M', 'Toggle the album of Coming Up (2)'],
-      ['N', 'Toggle the artist of Now Playing'],
-      ['Shift + N', 'Toggle the artist of Coming Up (1)'],
-      ['Cmd + Shift + N', 'Toggle the artist of Coming Up (2)'],
+      ['T', 'Toggle the artist of Now Playing'],
+      ['Shift + T', 'Toggle the artist of Coming Up (1)'],
+      ['Cmd + Shift + T', 'Toggle the artist of Coming Up (2)'],
       ['S', 'Open search'],
       ['O', 'Toggle your profile'],
       ['V', 'Expand the album art'],
@@ -293,7 +293,7 @@ window.addEventListener('keydown', e => {
   // +shift to toggle the artist of COMING UP (1) (the song you voted for)
   // +cmd+shift to toggle the artist of COMING UP (2)
   // handled via e.key (not e.code) to respect keyboard layouts such as Colemak
-  if (e.key === 'n' || e.key === 'N') {
+  if (e.key === 't' || e.key === 'T') {
     if (modalActive) return
     e.preventDefault()
     let artistLink: HTMLElement | null
