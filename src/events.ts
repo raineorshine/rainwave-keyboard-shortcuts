@@ -208,18 +208,16 @@ window.addEventListener('keydown', e => {
       $('.now_playing .art_container.art_expandable')?.click()
       break
 
-    // settings
+    // settings (toggle)
     case ',':
-      if (e.metaKey && e.shiftKey) {
-        // close
-        if (modalActive) {
-          $('.modal_close')!.click()
-        }
-        // open
-        else {
-          const settingsLink = $x("//*[contains(@class, 'menu')]//a[text()='Settings']")
-          settingsLink?.click()
-        }
+      // close
+      if (modalActive) {
+        $('.modal_close')!.click()
+      }
+      // open
+      else {
+        const settingsLink = $x("//*[contains(@class, 'menu')]//a[text()='Settings']")
+        settingsLink?.click()
       }
       break
   }
