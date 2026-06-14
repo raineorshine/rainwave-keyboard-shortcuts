@@ -137,6 +137,7 @@ window.addEventListener('keydown', e => {
 
     // vote for the next song
     // +shift to vote for the next round
+    // +cmd to toggle the album cover image of the respective song
     case 'a':
     case 'b':
     case 'c':
@@ -146,7 +147,13 @@ window.addEventListener('keydown', e => {
       if (modalActive) return
       const i = e.key.toLowerCase().charCodeAt(0) - 97 + (e.shiftKey ? 3 : 0)
       const song = $a('.timeline_event.sched_next .song')[i]
-      song?.click()
+      // cmd toggles the album cover image instead of voting
+      if (e.metaKey) {
+        e.preventDefault()
+        song?.querySelector<HTMLElement>('.art_container.art_expandable')?.click()
+      } else {
+        song?.click()
+      }
       break
     }
 

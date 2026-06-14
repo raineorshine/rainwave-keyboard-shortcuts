@@ -8,7 +8,9 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | `1`–`5`               | Rate the current song (whole stars)                |
 | `!` `@` `#` `$`       | Rate the current song half a star higher (1.5–4.5) |
 | `a` `b` `c`           | Vote for the next song                             |
-| `Shift` + `a`–`c`     | Vote in the following round                        |
+| `Shift` + `a`/`b`/`c` | Vote in the following round                        |
+| `Cmd` + `a`/`b`/`c`   | Toggle the cover image of the next songs           |
+| `Cmd` + `Shift` + `a`/`b`/`c` | Toggle the cover image of the following round |
 | `r`                   | Toggle requests                                    |
 | `l`                   | Toggle library                                     |
 | `Shift` + `l`         | Toggle the now-playing album in the library        |
