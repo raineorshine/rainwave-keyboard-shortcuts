@@ -44,6 +44,26 @@ window.addEventListener('keydown', e => {
 
   const modalActive = !!$('.modal_active')
 
+  // now-playing album (toggle)
+  // +shift to toggle the album of COMING UP (1) (the song you voted for)
+  // +option+shift to toggle the album of COMING UP (2)
+  // handled via e.code because Option mutates e.key on macOS
+  if (e.code === 'KeyM') {
+    if (modalActive) return
+    let albumLink: HTMLElement | null
+    if (e.shiftKey) {
+      const roundIndex = e.altKey ? 1 : 0
+      const round = $a('.timeline_event.sched_next')[roundIndex]
+      const song = round?.querySelector<HTMLElement>('.song.voting_registered') ?? round?.querySelector<HTMLElement>('.song')
+      albumLink = song?.querySelector<HTMLElement>('.album > a') ?? null
+    } else {
+      albumLink = $('.song.now_playing .album > a')
+    }
+    const albumId = (albumLink?.getAttribute('href') || '').split('/')[2]
+    if (albumId) toggleRoute('album', albumId)
+    return
+  }
+
   // escape
   switch (e.key) {
     case 'Escape':
