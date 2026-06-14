@@ -20,6 +20,7 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | `t`                           | Toggle the artist of Now Playing                                      |
 | `Shift` + `t`                 | Toggle the artist of Coming Up (1)                                    |
 | `Cmd` + `Shift` + `t`         | Toggle the artist of Coming Up (2)                                    |
+| `n`                           | Request the next unrated song from the open album                     |
 | `s`                           | Open search                                                           |
 | `o`                           | Toggle your profile                                                   |
 | `v`                           | Expand the album art                                                  |

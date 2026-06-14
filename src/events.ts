@@ -49,6 +49,7 @@ const shortcutGroups: { title: string; shortcuts: [string, string][] }[] = [
       ['T', 'Toggle the artist of Now Playing'],
       ['Shift + T', 'Toggle the artist of Coming Up (1)'],
       ['Cmd + Shift + T', 'Toggle the artist of Coming Up (2)'],
+      ['N', 'Request the next unrated song from the open album'],
       ['S', 'Open search'],
       ['O', 'Toggle your profile'],
       ['V', 'Expand the album art'],
@@ -307,6 +308,34 @@ window.addEventListener('keydown', e => {
     }
     const artistId = (artistLink?.getAttribute('href') || '').split('/')[2]
     if (artistId) toggleRoute('artist', artistId)
+    return
+  }
+
+  // request the next unrated song from the open album detail panel
+  // (excludes the song that is now playing)
+  // handled via e.key (not e.code) to respect keyboard layouts such as Colemak
+  if (e.key === 'n' || e.key === 'N') {
+    if (modalActive || e.shiftKey || e.metaKey || e.altKey) return
+    const panel = $('.detail.panel')
+    if (!panel || !Router.get_current_url().startsWith('album')) return
+    e.preventDefault()
+    const nowPlayingId = $('.song.now_playing .song_rating')?.getAttribute('name')
+    const rows = panel.querySelectorAll<HTMLElement>('.row.requestable')
+    for (let i = 0; i < rows.length; i++) {
+      const row = rows[i]
+      const rating = row.querySelector<HTMLElement>('.rating.song_rating')
+      const unrated = rating?.classList.contains('rating_global')
+      const songId = rating?.getAttribute('name')
+      if (unrated && songId && songId !== nowPlayingId) {
+        row.querySelector<HTMLElement>('.title')?.click()
+        // visual feedback that the song was requested; --row-hover defaults to
+        // #143347 but can be overridden by the monokai-theme package.
+        // remove .cool so its background does not override the highlight
+        row.classList.remove('cool')
+        row.style.backgroundColor = 'var(--row-hover, #143347)'
+        break
+      }
+    }
     return
   }
 
