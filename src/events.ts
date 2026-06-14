@@ -64,6 +64,27 @@ window.addEventListener('keydown', e => {
     return
   }
 
+  // now-playing artist (toggle)
+  // +shift to toggle the artist of COMING UP (1) (the song you voted for)
+  // +cmd+shift to toggle the artist of COMING UP (2)
+  // handled via e.key (not e.code) to respect keyboard layouts such as Colemak
+  if (e.key === 'n' || e.key === 'N') {
+    if (modalActive) return
+    e.preventDefault()
+    let artistLink: HTMLElement | null
+    if (e.shiftKey) {
+      const roundIndex = e.metaKey ? 1 : 0
+      const round = $a('.timeline_event.sched_next')[roundIndex]
+      const song = round?.querySelector<HTMLElement>('.song.voting_registered') ?? round?.querySelector<HTMLElement>('.song')
+      artistLink = song?.querySelector<HTMLElement>('.artist > a') ?? null
+    } else {
+      artistLink = $('.song.now_playing .artist > a')
+    }
+    const artistId = (artistLink?.getAttribute('href') || '').split('/')[2]
+    if (artistId) toggleRoute('artist', artistId)
+    return
+  }
+
   // escape
   switch (e.key) {
     case 'Escape':

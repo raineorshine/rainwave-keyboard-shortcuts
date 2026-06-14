@@ -17,6 +17,9 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | `m`                   | Toggle the now-playing album                        |
 | `Shift` + `m`         | Toggle the album of Coming Up (1)                   |
 | `Option` + `Shift` + `m` | Toggle the album of Coming Up (2)                |
+| `n`                   | Toggle the now-playing artist                       |
+| `Shift` + `n`         | Toggle the artist of Coming Up (1)                  |
+| `Cmd` + `Shift` + `n` | Toggle the artist of Coming Up (2)                  |
 | `s`                   | Open search                                        |
 | `o`                   | Toggle your profile                                |
 | `v`                   | Expand the album art                               |
