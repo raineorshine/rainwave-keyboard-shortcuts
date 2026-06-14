@@ -13,11 +13,11 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | `Cmd` + `Shift` + `a`/`b`/`c` | Toggle the cover image of the following round |
 | `r`                   | Toggle requests                                    |
 | `l`                   | Toggle library                                     |
-| `Shift` + `l`         | Toggle the now-playing album in the library        |
-| `m`                   | Toggle the now-playing album                        |
+| `Shift` + `l`         | Toggle the album of Now Playing in the library     |
+| `m`                   | Toggle the album of Now Playing                     |
 | `Shift` + `m`         | Toggle the album of Coming Up (1)                   |
 | `Option` + `Shift` + `m` | Toggle the album of Coming Up (2)                |
-| `n`                   | Toggle the now-playing artist                       |
+| `n`                   | Toggle the artist of Now Playing                    |
 | `Shift` + `n`         | Toggle the artist of Coming Up (1)                  |
 | `Cmd` + `Shift` + `n` | Toggle the artist of Coming Up (2)                  |
 | `s`                   | Open search                                        |
