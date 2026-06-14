@@ -31,7 +31,7 @@ const shortcutGroups: { title: string; shortcuts: [string, string][] }[] = [
   {
     title: 'Voting',
     shortcuts: [
-      ['a b c', 'Vote for the next song'],
+      ['a/b/c', 'Vote for the next song'],
       ['Shift + a/b/c', 'Vote in the following round'],
       ['Cmd + a/b/c', 'Toggle the cover image of the next songs'],
       ['Cmd + Shift + a/b/c', 'Toggle the cover image of the following round'],
