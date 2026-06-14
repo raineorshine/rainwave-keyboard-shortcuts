@@ -25,7 +25,7 @@ const shortcutGroups: { title: string; shortcuts: [string, string][] }[] = [
     shortcuts: [
       ['Space', 'Play / pause'],
       ['1–5', 'Rate the current song (whole stars)'],
-      ['! @ # $', 'Rate the current song half a star higher (1.5–4.5)'],
+      ['Shift + 1/2/3/4', 'Rate the current song half a star higher (1.5–4.5)'],
     ],
   },
   {

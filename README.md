@@ -6,7 +6,7 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | --------------------- | -------------------------------------------------- |
 | `Space`               | Play / pause                                       |
 | `1`–`5`               | Rate the current song (whole stars)                |
-| `!` `@` `#` `$`       | Rate the current song half a star higher (1.5–4.5) |
+| `Shift` + `1`/`2`/`3`/`4` | Rate the current song half a star higher (1.5–4.5) |
 | `a` `b` `c`           | Vote for the next song                             |
 | `Shift` + `a`/`b`/`c` | Vote in the following round                        |
 | `Cmd` + `a`/`b`/`c`   | Toggle the cover image of the next songs           |
