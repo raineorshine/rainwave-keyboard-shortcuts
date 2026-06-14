@@ -102,7 +102,7 @@ window.addEventListener('keydown', e => {
 
     // requests (toggle)
     case 'r':
-      if (modalActive) return
+      if (modalActive || e.metaKey) return
       toggleRoute('requests')
       break
 
