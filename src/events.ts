@@ -71,6 +71,10 @@ window.addEventListener('keydown', e => {
       if (modalActive) {
         $('.modal_close')!.click()
       }
+      // expanded album cover (close)
+      else if ($('.art_expandable.art_expanded')) {
+        $('.art_expandable.art_expanded')!.click()
+      }
       // open popups
       else if (Router.get_current_url()) {
         // close any open popups by navigating to the home route

@@ -21,7 +21,7 @@ Keyboard shortcuts for [Rainwave](https://github.com/rmcauley/rainwave).
 | `o`                   | Toggle your profile                                |
 | `v`                   | Expand the album art                               |
 | `p`                   | Toggle previously played                           |
-| `Esc`                 | Close the open modal / popup / previously played   |
+| `Esc`                 | Close the open modal / popup / previously played / expanded album art |
 | `Cmd` + `Shift` + `,` | Toggle settings                                    |
 
 ## Development
